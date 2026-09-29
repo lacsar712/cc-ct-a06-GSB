@@ -46,6 +46,17 @@ export function login(username, password) {
   });
 }
 
+export function fetchRange() {
+  return request("/range");
+}
+
+export function saveRange(lower_limit, upper_limit) {
+  return request("/range", {
+    method: "PUT",
+    body: JSON.stringify({ lower_limit, upper_limit }),
+  });
+}
+
 export function fetchSubmissions() {
   return request("/submissions");
 }
@@ -59,4 +70,15 @@ export function createSubmission(tool_code, offset_um) {
     method: "POST",
     body: JSON.stringify({ tool_code, offset_um: Number(offset_um) }),
   });
+}
+
+export function correctSubmission(id, offset_um) {
+  return request(`/submissions/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({ offset_um: Number(offset_um) }),
+  });
+}
+
+export function fetchHistory() {
+  return request("/history");
 }

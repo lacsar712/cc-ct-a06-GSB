@@ -73,4 +73,8 @@ JWT_SECRET = os.environ.get("JWT_SECRET", SECRET_KEY)
 JWT_ALGORITHM = "HS256"
 JWT_EXPIRE_HOURS = int(os.environ.get("JWT_EXPIRE_HOURS", "24"))
 
+# 量程台默认闭区间：刀补值必须落在 [下限, 上限] 内（含端点）
+DEFAULT_RANGE_LOWER = -20
+DEFAULT_RANGE_UPPER = 20
+# 兼容旧逻辑：worker 仍按绝对值公差判合格/超差
 OFFSET_TOLERANCE_UM = 12
